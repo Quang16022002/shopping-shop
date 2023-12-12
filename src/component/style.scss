@@ -1,0 +1,34 @@
+.navbar-brand img {
+    height: 60px;
+}
+.navbar {
+    height: 70px;
+    font-size: 18px;
+}
+.navbar-brand img {
+    width: 80%;
+    height: 80%;
+}
+.card {
+    img {
+        width: 250px;
+        height: 250px;
+        margin: 0 auto;
+        margin-bottom: 10px;
+    }
+    h5 {
+        margin-bottom: 20px;
+    }
+}
+.Home-banner img {
+    width: 100%;
+    margin: 0 auto;
+}
+
+.card-body h5 {
+    transition: color 0.3s ease;
+}
+
+.card-body h5:hover {
+    color: rgb(166, 130, 66);
+}
