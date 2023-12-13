@@ -17,7 +17,7 @@ export const getProduct = async (id) => {
         const response = await axios.get(`${serverUrl}/products/${id}`);
         return response.data;
     } catch (error) {
-        console.error('Error fetching products:', error);
+        console.error('Error fetching product:', error);
         throw error;
     }
 };

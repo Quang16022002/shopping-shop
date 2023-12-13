@@ -1,7 +1,10 @@
 import React from 'react';
 import './style.scss';
 import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 const Navbar = () => {
+    const state = useSelector((state) => state.handleCart);
+    console.log(state);
     return (
         <nav className="navbar navbar-expand-lg shadow p-3  bg-white rounded py-3 ">
             <div className="container-fluid">
@@ -50,9 +53,9 @@ const Navbar = () => {
                         <a href="" className="btn btn-outline-dark ms-2">
                             <i className="fa-solid fa-right-to-bracket me-2"></i>Register
                         </a>
-                        <a href="" className="btn btn-outline-dark ms-2">
-                            <i className="fa-solid fa-cart-arrow-down me-2"></i>Carts(0)
-                        </a>
+                        <Link to="/cart" href="" className="btn btn-outline-dark ms-2">
+                            <i className="fa-solid fa-cart-arrow-down me-2"></i>Carts({state.length})
+                        </Link>
                     </div>
                 </div>
             </div>

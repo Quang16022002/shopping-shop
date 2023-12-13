@@ -3,28 +3,30 @@ import { useParams } from 'react-router-dom';
 import * as apis from '../apis';
 import 'react-loading-skeleton/dist/skeleton.css';
 import Skeleton from 'react-loading-skeleton';
-
+import { useSelector, useDispatch } from 'react-redux';
+import { addCart } from '../reducx/action';
 const Product = () => {
-    const [products, setProducts] = useState();
+    const [product, setProduct] = useState(null);
     const [loading, setLoading] = useState(true);
     const { id } = useParams();
+    const dispatch = useDispatch();
+    const addProduct = (product) => {
+        dispatch(addCart(product));
+    };
+
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const productsData = await fetch(`https://fakestoreapi.com/products/${id}`);
-
-                setProducts(await productsData.json());
-
+                const productData = await apis.getProduct(id);
+                setProduct(productData);
                 setLoading(false);
             } catch (error) {
-                console.error('Error fetching products:', error);
                 setLoading(false);
             }
         };
 
         fetchData();
-        console.log(products);
-    }, []);
+    }, [id]);
 
     return (
         <div className="container mt-4">
@@ -49,18 +51,21 @@ const Product = () => {
                 <div className="row ">
                     <div className="col-md-12 d-flex my-4">
                         <div className="col-md-6 ">
-                            <img style={{ height: 400, width: 400 }} src={products.image}></img>
+                            <img style={{ height: 400, width: 400 }} src={product.image}></img>
                         </div>
                         <div>
-                            <h4 className="text-uppercase text-black-50">{products.category}</h4>
-                            <h1 className="display-5">{products.title}</h1>
+                            <h4 className="text-uppercase text-black-50">{product.category}</h4>
+                            <h1 className="display-5">{product.title}</h1>
                             <p className="fw-bolder lead">
-                                Rating {products.rating.rate}
+                                Rating {product.rating.rate}
                                 <i className="fa-solid fa-star "></i>
                             </p>
-                            <h3 className="display-6 fw-bolder ">${products.price}</h3>
-                            <p className="lead">{products.description}</p>
-                            <button className="btn btn-outline-dark shadow   rounded me-3 my-3">
+                            <h3 className="display-6 fw-bolder ">${product.price}</h3>
+                            <p className="lead">{product.description}</p>
+                            <button
+                                onClick={() => addProduct(product)}
+                                className="btn btn-outline-dark shadow   rounded me-3 my-3"
+                            >
                                 <i className="fa-solid fa-cart-arrow-down me-2"></i>Add to cart
                             </button>
                             <button className="btn btn-dark shadow   ">Go to cart</button>
