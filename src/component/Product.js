@@ -5,6 +5,8 @@ import 'react-loading-skeleton/dist/skeleton.css';
 import Skeleton from 'react-loading-skeleton';
 import { useSelector, useDispatch } from 'react-redux';
 import { addCart } from '../reducx/action';
+import { toast } from 'react-toastify';
+import { Link } from 'react-router-dom';
 const Product = () => {
     const [product, setProduct] = useState(null);
     const [loading, setLoading] = useState(true);
@@ -12,6 +14,19 @@ const Product = () => {
     const dispatch = useDispatch();
     const addProduct = (product) => {
         dispatch(addCart(product));
+        notify(product.title);
+    };
+
+    const notify = (productName) => {
+        toast.success(`${productName} has been added to your cart!`, {
+            position: 'bottom-right',
+            autoClose: 3000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+        });
     };
 
     useEffect(() => {
@@ -68,7 +83,9 @@ const Product = () => {
                             >
                                 <i className="fa-solid fa-cart-arrow-down me-2"></i>Add to cart
                             </button>
-                            <button className="btn btn-dark shadow   ">Go to cart</button>
+                            <Link to="/cart">
+                                <button className="btn btn-dark shadow   ">Go to cart</button>
+                            </Link>
                         </div>
                     </div>
                 </div>
