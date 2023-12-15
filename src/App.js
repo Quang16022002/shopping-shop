@@ -1,5 +1,5 @@
 import './App.css';
-import { Home, Contact, Navbar, Products, About, Product, Cart } from './component';
+import { Home, Navbar, Products, About, Cart, Product, Footter, Blog } from './component';
 import { Routes, Route } from 'react-router-dom';
 
 function App() {
@@ -11,9 +11,10 @@ function App() {
                 <Route path="/products" element={<Products />} />
                 <Route path="/products/:id" element={<Product />} />
                 <Route path="/about" element={<About />} />
-                <Route path="/contact" element={<Contact />} />
+                <Route path="/blog" element={<Blog />} />
                 <Route path="/cart" element={<Cart />} />
             </Routes>
+            <Footter />
         </>
     );
 }

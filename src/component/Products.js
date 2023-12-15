@@ -69,24 +69,26 @@ const Products = () => {
                     </div>
 
                     {products.map((product, index) => (
-                        <div key={product.id} className=" col-md-3 mb-3 mt-3  ">
+                        <div key={product.id} className=" col-lg-3 col-md-6 col-sm-12 mb-3 mt-3  ">
                             <NavLink
                                 style={{ textDecoration: 'none' }}
                                 to={isHomePage ? `products/${product.id}` : `${product.id}`}
                             >
-                                <div className="a card h-100 text-center item-center py-4">
-                                    <img src={product.image} className="card-img-top " alt="..." />
+                                <div className="img-product card h-100 text-center item-center py-4">
+                                    <div className="card-img-container">
+                                        <img src={product.image} className="card-img-top img-fluid" alt="..." />
+                                    </div>
                                     <div className="card-body">
                                         <h5 className="card-title">{product.title.substring(0, 20)}...</h5>
                                         <p className="card-text">${product.price}</p>
                                         <p className="card-text">
                                             rate: {product.rating.rate}
-                                            <i className="fa-solid fa-star "></i>
+                                            <i className="fa-solid fa-star"></i>
                                         </p>
 
                                         <Link
                                             to={isHomePage ? `products/${product.id}` : `${product.id}`}
-                                            className="btn btn-outline-dark shadow   rounded"
+                                            className="btn btn-outline-dark shadow rounded w-50"
                                         >
                                             Buy now
                                         </Link>

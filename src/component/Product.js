@@ -63,12 +63,12 @@ const Product = () => {
                     </div>
                 </div>
             ) : (
-                <div className="row ">
-                    <div className="col-md-12 d-flex my-4">
-                        <div className="col-md-6 ">
+                <div className="container">
+                    <div className="row mt-5 ">
+                        <div className="col-md-6 col-sm-12 ">
                             <img style={{ height: 400, width: 400 }} src={product.image}></img>
                         </div>
-                        <div>
+                        <div className="col-md-6 col-sm-12">
                             <h4 className="text-uppercase text-black-50">{product.category}</h4>
                             <h1 className="display-5">{product.title}</h1>
                             <p className="fw-bolder lead">

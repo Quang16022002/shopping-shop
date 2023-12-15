@@ -19,6 +19,8 @@ const handleCart = (state = cart, action) => {
                     },
                 ];
             }
+        case 'DELITEM':
+            return state.filter((item) => item.id !== action.payload.id);
 
         case 'INCREASE_QTY':
             return state.map((x) => (x.id === product.id ? { ...x, qty: x.qty + 1 } : x));

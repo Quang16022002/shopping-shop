@@ -4,16 +4,10 @@ export const addCart = (product) => {
         payload: product,
     };
 };
-export const delCart = (product) => {
+export const delCart = (productId) => {
     return {
         type: 'DELITEM',
-        payload: product,
-    };
-};
-
-export const toggleCart = () => {
-    return {
-        type: 'TOGGLE_CART',
+        payload: { id: productId },
     };
 };
 
