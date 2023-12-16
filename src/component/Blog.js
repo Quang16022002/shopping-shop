@@ -1,26 +1,35 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import axios from 'axios';
 
-const Blog = () => {
+const BLog = () => {
+    useEffect(() => {
+        const fetchData = async () => {
+            const options = {
+                method: 'GET',
+                url: 'https://pizza-and-desserts.p.rapidapi.com/pizzas/1',
+                headers: {
+                    'X-RapidAPI-Key': 'db561d538dmshd405db89746f2e0p165ac1jsnc69b8f3eaa1a',
+                    'X-RapidAPI-Host': 'pizza-and-desserts.p.rapidapi.com',
+                },
+            };
+
+            try {
+                const response = await axios.request(options);
+                console.log(response.data);
+            } catch (error) {
+                console.error(error);
+            }
+        };
+
+        fetchData();
+    }, []); // The empty dependency array ensures useEffect runs only once on component mount
+
     return (
-        <div className="container mt-5 ">
-            <div className="row">
-                <div className="col-12 col-lg-9">
-                    <div>
-                        <h3 style={{ marginBottom: 50 }}>NEWS</h3>
-                        <img src="https://file.hstatic.net/1000271846/article/900x900-a_9aa34f3a1e7d44238b7984e393ed5966.jpg"></img>
-                        <p className="mt-5">
-                            HAPPY MOTHER'S DAY - GIÀY ZOE SALE 20% Để kỷ niệm Mother's Day - Ngày Lễ của các bà mẹ, ZOE
-                            dành tặng cho các bạn ưu đãi SALE đặc biệt: giảm giá 20% cho tất cả các sản phẩm giày ZOE
-                            khi ...
-                        </p>
-                    </div>
-                </div>
-                <div className="col-12 col-lg-3">
-                    <h3>NEW POST</h3>
-                </div>
-            </div>
+        <div>
+            {/* Your component JSX goes here */}
+            <p>Pizza information will be logged to the console.</p>
         </div>
     );
 };
 
-export default Blog;
+export default BLog;
